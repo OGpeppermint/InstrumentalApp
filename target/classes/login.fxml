@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #101010;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="168.0" style="-fx-background-color: #E41F1F;" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="343.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="title" fitHeight="69.0" fitWidth="259.0" layoutX="87.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/InstrumentalText.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="logo" fitHeight="88.0" fitWidth="82.0" layoutX="173.0" layoutY="23.0">
+               <image>
+                  <Image url="@../../../Images/Logo.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="usernameTextField" layoutX="107.0" layoutY="206.0" prefHeight="25.0" prefWidth="221.0" promptText="Username" />
+            <TextField fx:id="passwordTextField" layoutX="107.0" layoutY="259.0" prefHeight="25.0" prefWidth="221.0" promptText="Password" />
+            <Text fill="WHITE" layoutX="107.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+            <Text fill="WHITE" layoutX="107.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <Button fx:id="loginButton" layoutX="159.0" layoutY="332.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #E41F1F;" text="Login" textFill="WHITE" />
+            <Button fx:id="exitButton" layoutX="385.0" layoutY="19.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: #E41F1F;" text="X" textFill="WHITE" />
+            <Label fx:id="loginFailMessage" layoutX="139.0" layoutY="296.0" textFill="#e41f1f" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
