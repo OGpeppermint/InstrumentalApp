@@ -26,13 +26,14 @@
                   <Image url="@../../../Images/Logo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="usernameTextField" layoutX="107.0" layoutY="206.0" prefHeight="25.0" prefWidth="221.0" promptText="Username" />
+            <TextField fx:id="emailTextField" layoutX="107.0" layoutY="206.0" prefHeight="25.0" prefWidth="221.0" promptText="Email" />
             <TextField fx:id="passwordTextField" layoutX="107.0" layoutY="259.0" prefHeight="25.0" prefWidth="221.0" promptText="Password" />
-            <Text fill="WHITE" layoutX="107.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+            <Text fill="WHITE" layoutX="107.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
             <Text fill="WHITE" layoutX="107.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <Button fx:id="loginButton" layoutX="159.0" layoutY="332.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #E41F1F;" text="Login" textFill="WHITE" />
+            <Button fx:id="loginButton" layoutX="227.0" layoutY="330.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #E41F1F;" text="Login" textFill="WHITE" />
             <Button fx:id="exitButton" layoutX="385.0" layoutY="19.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: #E41F1F;" text="X" textFill="WHITE" />
             <Label fx:id="loginFailMessage" layoutX="139.0" layoutY="296.0" textFill="#e41f1f" />
+            <Button fx:id="registerButton" layoutX="94.0" layoutY="330.0" mnemonicParsing="false" onAction="#registerButton" prefHeight="25.0" prefWidth="111.0" style="-fx-background-color: #E41F1F;" text="Register" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>
