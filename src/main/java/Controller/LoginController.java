@@ -78,16 +78,45 @@ public class LoginController implements Initializable {
 
     }
 
-    public void registerButton(ActionEvent actionEvent)
+    public void registerButton(ActionEvent actionEvent) //registers account
     {
         try {
-            FileWriter fw = new FileWriter("login.txt", true);
+            FileWriter fw = new FileWriter("login.txt", true); //reads file for duplicate accounts
 
             if(!emailTextField.getText().isBlank() && !passwordTextField.getText().isBlank())
             {
-                fw.write(emailTextField.getText() + "\t" + passwordTextField.getText() + "\n");
-                fw.close();
-                loginFailMessage.setText("Registration successful!");
+                boolean match = false;
+
+                String email = emailTextField.getText();
+                String pass = passwordTextField.getText();
+
+                FileReader fr = new FileReader("login.txt");
+                BufferedReader br = new BufferedReader(fr);
+
+                String line;
+
+                while((line=br.readLine())!=null)
+                    if(line.equals(email+"\t"+pass))
+                    {
+                        match = true;
+                        break;
+                    }
+                fr.close();
+
+
+                if(match)//if there is an account registered with same email, prevent the registration of duplicate email account
+                {
+
+                    loginFailMessage.setText("Account already made under this email address");
+
+                }else
+                {
+                    fw.write(emailTextField.getText() + "\t" + passwordTextField.getText() + "\n");
+                    fw.close();
+                    loginFailMessage.setText("Registration successful!");
+                }
+
+
             } else
             {
                 loginFailMessage.setText("Please enter email and password.");
@@ -103,16 +132,19 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void validateLogin() {
+    public void validateLogin() {//checks for registered user
 
         try{
             boolean match = false;
+
             String email = emailTextField.getText();
             String pass = passwordTextField.getText();
 
             FileReader fr = new FileReader("login.txt");
             BufferedReader br = new BufferedReader(fr);
+
             String line;
+
             while((line=br.readLine())!=null)
                 if(line.equals(email+"\t"+pass))
                 {
@@ -121,6 +153,8 @@ public class LoginController implements Initializable {
                 }
 
             fr.close();
+
+
             if(match)
             {
                 loginFailMessage.setText("Login successful!");
@@ -135,7 +169,7 @@ public class LoginController implements Initializable {
 
 
 
-        //mysql database connection test
+        //mysql database connection test (for online connectivity)
         /*
         System.out.println("Entered Function");
         databaseConnection connection = new databaseConnection();
