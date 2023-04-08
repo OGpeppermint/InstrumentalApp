@@ -5,7 +5,5 @@ module com.example.instrumental {
     requires javafx.controls;
     requires java.sql;
 
-    requires mysql.connector.java;
-
     opens Controller;
 }

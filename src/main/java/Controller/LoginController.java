@@ -14,8 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,10 +38,13 @@ public class LoginController implements Initializable {
     @FXML private Label loginFailMessage;
 
     @FXML
-    private TextField usernameTextField;
+    private TextField emailTextField;
 
     @FXML
     private TextField passwordTextField;
+
+    @FXML
+    private Button registerButton;
 
 
     public void exitButton(ActionEvent actionEvent) {
@@ -54,12 +56,12 @@ public class LoginController implements Initializable {
     {
         loginFailMessage.setText("");
 
-        if(!usernameTextField.getText().isBlank() && !passwordTextField.getText().isBlank())
+        if(!emailTextField.getText().isBlank() && !passwordTextField.getText().isBlank())
         {
             validateLogin();
         } else
         {
-            loginFailMessage.setText("Please enter username and password.");
+            loginFailMessage.setText("Please enter email and password.");
         }
     }
 
@@ -76,8 +78,65 @@ public class LoginController implements Initializable {
 
     }
 
-    public void validateLogin()
+    public void registerButton(ActionEvent actionEvent)
     {
+        try {
+            FileWriter fw = new FileWriter("login.txt", true);
+
+            if(!emailTextField.getText().isBlank() && !passwordTextField.getText().isBlank())
+            {
+                fw.write(emailTextField.getText() + "\t" + passwordTextField.getText() + "\n");
+                fw.close();
+                loginFailMessage.setText("Registration successful!");
+            } else
+            {
+                loginFailMessage.setText("Please enter email and password.");
+            }
+
+            fw.close();
+
+
+
+        } catch(Exception e)
+        {
+
+        }
+    }
+
+    public void validateLogin() {
+
+        try{
+            boolean match = false;
+            String email = emailTextField.getText();
+            String pass = passwordTextField.getText();
+
+            FileReader fr = new FileReader("login.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while((line=br.readLine())!=null)
+                if(line.equals(email+"\t"+pass))
+                {
+                    match = true;
+                    break;
+                }
+
+            fr.close();
+            if(match)
+            {
+                loginFailMessage.setText("Login successful!");
+            }else
+            {
+                loginFailMessage.setText("Invalid login information");
+            }
+        }catch (Exception e)
+        {
+
+        }
+
+
+
+        //mysql database connection test
+        /*
         System.out.println("Entered Function");
         databaseConnection connection = new databaseConnection();
         Connection connect = connection.getConnection();
@@ -103,7 +162,9 @@ public class LoginController implements Initializable {
         {
             e.printStackTrace();
             e.getCause();
-        }
+        }*/
     }
+
+
 }
 
