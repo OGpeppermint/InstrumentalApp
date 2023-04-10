@@ -1,4 +1,2 @@
-package Model;
-
-public class Instrument {
+package Model;public class Instrument {
 }
