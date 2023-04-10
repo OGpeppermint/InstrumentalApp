@@ -32,7 +32,7 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="419.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="137.0" layoutY="34.0" text="Welcome to Insturmental!" textFill="WHITE" />
+            <Label layoutX="137.0" layoutY="34.0" text="Welcome to Instrumental!" textFill="WHITE" />
             <Button fx:id="exitButton" layoutX="371.0" layoutY="13.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: #E41F1F;" text="X" textFill="WHITE" />
             <Label layoutX="82.0" layoutY="337.0" text="Select one of the tabs to the left to get started!" textFill="WHITE" />
          </children>
