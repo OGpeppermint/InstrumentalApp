@@ -5,23 +5,20 @@ import java.sql.*;
 import Controller.databaseConnection;
 
 public class Instrument {
-    private int id;
-    private String name;
-    private String brand;
-    private String model;
-    private String type;
-    private Date year = null;
-    private String condition;
-    private String material;
-    private String number;
-    private float price;
-    private String email;
-    private Connection con;
-    private databaseConnection conData;
-    
-    
+    protected int id;
+    protected String name;
+    protected String brand;
+    protected String model;
+    protected String type;
+    protected Date year = null;
+    protected String condition;
+    protected String number;
+    protected float price;
+    protected String email;
+
+
     public Instrument(int id, String name, String brand, String model, String type, int year,
-                      String condition, String material, String number, float price, String email) {
+                      String condition, String number, float price, String email) {
         this.id = id;
         this.name = name;
         this.brand = brand;
@@ -29,7 +26,6 @@ public class Instrument {
         this.type = type;
         this.year = new Date(year, 0, 0);
         this.condition = condition;
-        this.material = material;
         this.number = number;
         this.price = price;
         this.email = email;
@@ -91,14 +87,6 @@ public class Instrument {
         this.condition = condition;
     }
 
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
-    }
-
     public String getNumber() {
         return number;
     }
@@ -124,54 +112,8 @@ public class Instrument {
     }
 
     public void backup() throws SQLException {
-        try {
-            con = conData.getConnection();
-            PreparedStatement pStmt = con.prepareStatement("insert into instrumental.instruments values (?, ?," +
-                    "?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            pStmt.setInt(1, this.id);
-            pStmt.setString(2, this.name);
-            pStmt.setString(3, this.brand);
-            pStmt.setString(4, this.model);
-            pStmt.setString(5, this.type);
-            pStmt.setDate(6, this.year);
-            pStmt.setString(7, this.condition);
-            pStmt.setString(8, this.material);
-            pStmt.setString(9, this.number);
-            pStmt.setFloat(10, this.price);
-            pStmt.setString(11, this.email);
-            pStmt.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            con.close();
-        }
     }
 
     public void restore() throws SQLException {
-        try {
-            con = conData.getConnection();
-            PreparedStatement stmt = con.prepareStatement("select * from instrumental.instruments where ID = " + this.id);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                this.id = rs.getInt("ID");
-                this.name = rs.getString("NAME");
-                this.brand = rs.getString("BRAND");
-                this.model = rs.getString("MODEL");
-                this.type = rs.getString("TYPE");
-                this.year = rs.getDate("YEAR");
-                this.condition = rs.getString("CONDITION");
-                this.material = rs.getString("MATERIAL");
-                this.number = rs.getString("NUMBER");
-                this.price = rs.getFloat("PRICE");
-                this.email = rs.getString("EMAIL")
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
-        } finally {
-            con.close();
-        }
     }
 }
-
